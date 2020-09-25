@@ -7,6 +7,21 @@ like Visa, Mastercard, American Express, etc.
 This package is based on the [braintree/credit-card-type](https://github.com/braintree/credit-card-type) 
 javascript package. All the card types configuration have been extracted from it.
 
+## Current Cart Type Validators
+
+* Visa
+* Mastercard
+* American Express
+* Diners Club
+* Discover
+* JCB
+* UnionPay
+* Maestro
+* Elo
+* Mir
+* Hiper
+* Hipercard
+
 ## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
