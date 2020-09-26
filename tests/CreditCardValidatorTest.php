@@ -2,11 +2,9 @@
 
 namespace Jlorente\CreditCards\Tests;
 
-use InvalidArgumentException;
 use Jlorente\CreditCards\CreditCardTypeConfig;
 use Jlorente\CreditCards\CreditCardValidator;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Class CreditCardValidatorTest

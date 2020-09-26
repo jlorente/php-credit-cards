@@ -1,8 +1,9 @@
 PHP Credit Cards
 ================
-A PHP package to perform operations on debit and credit cards like validate 
-brand, number and Luhn algorithm and formatting. It validates popular brands 
-like Visa, Mastercard, American Express, etc.
+
+A PHP package to perform operations on debit and credit cards like format, validate 
+brand, number and Luhn algorithm. It validates popular brands like Visa, Mastercard, 
+American Express, etc.
 
 This package is based on the [braintree/credit-card-type](https://github.com/braintree/credit-card-type) 
 javascript package. All the card types configuration have been extracted from it.

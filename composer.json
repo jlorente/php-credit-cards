@@ -1,6 +1,6 @@
 {
     "name": "jlorente/php-credit-cards",
-    "description": "A PHP package to perform operations on debit and credit cards like validate brand, number and Luhn algorithm and formatting. It validates popular brands like Visa, Mastercard, American Express, etc.",
+    "description": "A PHP package to perform operations on debit and credit cards like format, validate brand, number and Luhn algorithm. It validates popular brands like Visa, Mastercard, American Express, etc.",
     "keywords": [
         "php",
         "jlorente",
