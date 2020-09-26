@@ -35,7 +35,7 @@ use SplQueue;
  * ```
  *
  * @see CreditCardTypeConfigList
- * @author Jose Lorente <jose.lorente.martin@gmail.com>
+ * @author José Lorente <jose.lorente.martin@gmail.com>
  */
 class CreditCardTypeConfig
 {
@@ -204,11 +204,11 @@ class CreditCardTypeConfig
     /**
      * Sets the luhn check configuration for this object.
      * 
-     * @param array $value
+     * @param bool $value
      * @return $this For fluent configuration of the object.
      * @throws InvalidArgumentException
      */
-    public function setLuhnCheck($value)
+    protected function setLuhnCheck($value)
     {
         if (is_bool($value) === false) {
             throw new InvalidArgumentException('Invalid luhnCheck configuration property provided');
@@ -308,7 +308,7 @@ class CreditCardTypeConfig
      */
     public function matchesSecurityCode($securityCode)
     {
-        return ctype_digit($securityCode) && $this->code['size'] === strlen($securityCode);
+        return $this->isDigits($securityCode) && $this->code['size'] === strlen($securityCode);
     }
 
     /**
@@ -452,7 +452,7 @@ class CreditCardTypeConfig
                     throw new InvalidArgumentException('Pattern elements provided as array range should contain exactly two elements');
                 }
 
-                if (ctype_digit($value[0]) === false || ctype_digit($value[1]) === false) {
+                if ($this->isDigits($value[0]) === false || $this->isDigits($value[1]) === false) {
                     throw new InvalidArgumentException('Pattern range elements should be integers or strings representing integer values');
                 }
 
@@ -463,7 +463,7 @@ class CreditCardTypeConfig
                     throw new InvalidArgumentException('Pattern range min element should be greater than zero and less than max element');
                 }
             } else {
-                if (ctype_digit($value) === false) {
+                if ($this->isDigits($value) === false) {
                     throw new InvalidArgumentException('Pattern elements should be integers or strings representing integer values');
                 }
 
@@ -486,7 +486,7 @@ class CreditCardTypeConfig
     protected function setGaps(array $values)
     {
         foreach ($values as $value) {
-            if (ctype_digit($value) === false) {
+            if ($this->isDigits($value) === false) {
                 throw new InvalidArgumentException('Gaps elements should be integers or strings representing integer values');
             }
         }
@@ -511,7 +511,7 @@ class CreditCardTypeConfig
                     throw new InvalidArgumentException('Length elements provided as array range should contain exactly two elements');
                 }
 
-                if (ctype_digit($value[0]) === false || ctype_digit($value[1]) === false) {
+                if ($this->isDigits($value[0]) === false || $this->isDigits($value[1]) === false) {
                     throw new InvalidArgumentException('Length range elements should be integers or strings representing integer values');
                 }
 
@@ -522,7 +522,7 @@ class CreditCardTypeConfig
                     throw new InvalidArgumentException('Length range min element should be greater than zero and less than max element');
                 }
             } else {
-                if (ctype_digit($value) === false) {
+                if ($this->isDigits($value) === false) {
                     throw new InvalidArgumentException('Length elements should be integers or strings representing integer values');
                 }
 
@@ -548,7 +548,7 @@ class CreditCardTypeConfig
             throw new InvalidArgumentException('Code name must be provided in the configuration object and must be a string');
         }
 
-        if (isset($config['size']) === false || ctype_digit($config['size']) === false) {
+        if (isset($config['size']) === false || $this->isDigits($config['size']) === false) {
             throw new InvalidArgumentException('Code size must be provided in the configuration object and must be an integer or a string representing an integer value');
         }
 
@@ -587,7 +587,7 @@ class CreditCardTypeConfig
             return $this->matchesRange($cardNumber, $pattern[0], $pattern[1]);
         }
 
-        return $this->matchesPattern($cardNumber, $pattern);
+        return $this->matchesSimplePattern($cardNumber, $pattern);
     }
 
     /**
@@ -660,6 +660,17 @@ class CreditCardTypeConfig
     {
         $cardNumberLength = strlen($cardNumber);
         return $min <= $cardNumberLength && $cardNumberLength <= $max;
+    }
+
+    /**
+     * Checks if the value is formed by digits or not.
+     * 
+     * @param string|int $value
+     * @return bool
+     */
+    protected function isDigits($value)
+    {
+        return !!preg_match('/^[0-9]+$/', (string) $value);
     }
 
 }

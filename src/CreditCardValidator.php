@@ -44,7 +44,7 @@ use SplPriorityQueue;
  * @method bool isHiper($cardNumber)
  * @method bool isHiperCard($cardNumber)
  *
- * @author Jose Lorente <jose.lorente.martin@gmail.com>
+ * @author José Lorente <jose.lorente.martin@gmail.com>
  */
 class CreditCardValidator
 {
@@ -113,7 +113,7 @@ class CreditCardValidator
      * @param array $allowedTypes
      * @return \static
      */
-    public static function make(array $allowedTypes = null)
+    public static function make(array $allowedTypes = [])
     {
         return new static($allowedTypes);
     }
@@ -123,12 +123,12 @@ class CreditCardValidator
      * 
      * @param array $allowedTypes
      */
-    public function __construct(array $allowedTypes = null)
+    public function __construct(array $allowedTypes = [])
     {
-        if ($allowedTypes === null) {
-            $this->allowedTypes = static::getFullTypesList();
-        } else {
+        if ($allowedTypes) {
             $this->setAllowedTypesList($allowedTypes);
+        } else {
+            $this->allowedTypes = static::getFullTypesList();
         }
     }
 
@@ -177,7 +177,7 @@ class CreditCardValidator
      */
     public function is($cardType, $cardNumber)
     {
-        $bestMatch = $this->getCreditCardType($cardNumber);
+        $bestMatch = $this->getType($cardNumber);
         return $bestMatch ? $bestMatch->getType() === $cardType : false;
     }
 
@@ -261,7 +261,7 @@ class CreditCardValidator
                 return $this->is($this->methodMap[$method], $cardNumber);
             }
 
-            return $this->is($name, $cardNumber);
+            return $this->is($method, $cardNumber);
         } else {
             throw new BadMethodCallException("Call to undefined method [$name]");
         }
@@ -274,12 +274,15 @@ class CreditCardValidator
      */
     protected function loadTypesInfo()
     {
-        $this->typesInfo = [];
+        $typesInfo = [];
         $cardTypesList = CreditCardTypeConfigList::get();
         foreach ($this->getAllowedTypesList() as $card) {
-            $this->typesInfo[$card] = new CreditCardTypeConfig($cardTypesList[$card]);
+            if (isset($cardTypesList[$card])) {
+                $typesInfo[$card] = new CreditCardTypeConfig($cardTypesList[$card]);
+            }
         }
 
+        $this->typesInfo = $typesInfo;
         return $this;
     }
 

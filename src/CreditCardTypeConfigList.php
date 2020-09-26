@@ -29,12 +29,13 @@ namespace Jlorente\CreditCards;
  *              'name' => 'CVV',          // Name of the security code
  *              'size' => 3,              // Valid length of the security code
  *          ],
+ *          'luhnCheck' => true           // To validate the Luhn's algorithm when calling "matches" method
  *      ],
  *  ];
  * ```
  * 
  * @see https://github.com/braintree/credit-card-type/blob/master/src/lib/card-types.ts
- * @author Jose Lorente <jose.lorente.martin@gmail.com>
+ * @author José Lorente <jose.lorente.martin@gmail.com>
  */
 class CreditCardTypeConfigList
 {
@@ -84,6 +85,7 @@ class CreditCardTypeConfigList
                     'name' => 'CVC',
                     'size' => 3,
                 ],
+                'luhnCheck' => true,
             ],
             CreditCardValidator::TYPE_AMERICAN_EXPRESS => [
                 'niceType' => 'American Express',
@@ -100,6 +102,7 @@ class CreditCardTypeConfigList
                     'name' => 'CID',
                     'size' => 4,
                 ],
+                'luhnCheck' => true,
             ],
             CreditCardValidator::TYPE_DINERS_CLUB => [
                 'niceType' => 'Diners Club',
@@ -120,6 +123,7 @@ class CreditCardTypeConfigList
                     'name' => 'CVV',
                     'size' => 3,
                 ],
+                'luhnCheck' => true,
             ],
             CreditCardValidator::TYPE_DISCOVER => [
                 'niceType' => 'Discover',
@@ -138,6 +142,7 @@ class CreditCardTypeConfigList
                     'name' => 'CID',
                     'size' => 3,
                 ],
+                'luhnCheck' => true,
             ],
             CreditCardValidator::TYPE_JCB => [
                 'niceType' => 'JCB',
@@ -158,6 +163,7 @@ class CreditCardTypeConfigList
                     'name' => 'CVV',
                     'size' => 3,
                 ],
+                'luhnCheck' => true,
             ],
             CreditCardValidator::TYPE_UNIONPAY => [
                 'niceType' => 'UnionPay',
@@ -202,6 +208,7 @@ class CreditCardTypeConfigList
                     'name' => 'CVN',
                     'size' => 3,
                 ],
+                'luhnCheck' => true,
             ],
             CreditCardValidator::TYPE_MAESTRO => [
                 'niceType' => 'Maestro',
@@ -224,6 +231,7 @@ class CreditCardTypeConfigList
                     'name' => 'CVC',
                     'size' => 3,
                 ],
+                'luhnCheck' => true,
             ],
             CreditCardValidator::TYPE_ELO => [
                 'niceType' => 'Elo',
@@ -263,6 +271,7 @@ class CreditCardTypeConfigList
                     'name' => 'CVE',
                     'size' => 3,
                 ],
+                'luhnCheck' => true,
             ],
             CreditCardValidator::TYPE_MIR => [
                 'niceType' => 'Mir',
@@ -284,6 +293,7 @@ class CreditCardTypeConfigList
                     'name' => 'CVP2',
                     'size' => 3,
                 ],
+                'luhnCheck' => true,
             ],
             CreditCardValidator::TYPE_HIPER => [
                 'niceType' => 'Hiper',
@@ -303,6 +313,7 @@ class CreditCardTypeConfigList
                     'name' => 'CVC',
                     'size' => 3,
                 ],
+                'luhnCheck' => true,
             ],
             CreditCardValidator::TYPE_HIPERCARD => [
                 'niceType' => 'Hipercard',
@@ -318,6 +329,7 @@ class CreditCardTypeConfigList
                     'name' => 'CVC',
                     'size' => 3,
                 ],
+                'luhnCheck' => true,
             ],
         ];
     }

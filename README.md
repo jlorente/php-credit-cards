@@ -149,6 +149,7 @@ A credit type configuration has the following structure:
             'name' => 'CVV',          // Name of the security code
             'size' => 3,              // Valid length of the security code
         ],
+        'luhnCheck' => true           // To validate the Luhn's algorithm when calling matches
     ],
 ];
 ```

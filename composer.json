@@ -13,7 +13,9 @@
         "visa",
         "mastercard",
         "american express",
-        "diners club"
+        "discover",
+        "diners club",
+        "unionpay"
     ],
     "license": "MIT",
     "authors": [
@@ -26,11 +28,18 @@
         "php": ">=5.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.0.0"
+        "php": ">=7.2",
+        "phpunit/phpunit": "^8.0.0",
+        "mockery/mockery": "^1.3"
     },
     "autoload": {
         "psr-4": {
             "Jlorente\\CreditCards\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": { 
+            "Jlorente\\CreditCards\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable"
