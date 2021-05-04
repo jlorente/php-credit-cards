@@ -122,7 +122,7 @@ class CreditCardTypeConfig
     protected $luhnCheck = true;
 
     /**
-     * CreditCardConfig constructor.
+     * CreditCardTypeConfig constructor.
      * 
      * @param array $config
      */

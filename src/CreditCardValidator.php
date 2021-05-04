@@ -133,10 +133,10 @@ class CreditCardValidator
     }
 
     /**
-     * Gets the best CreditCardConfig object that matches the given card number.
+     * Gets the best CreditCardTypeConfig object that matches the given card number.
      * 
      * @param string|int $cardNumber
-     * @return CreditCardConfig|null
+     * @return CreditCardTypeConfig|null
      */
     public function getType($cardNumber)
     {
@@ -204,7 +204,7 @@ class CreditCardValidator
     /**
      * Gets the credit card typesInfo objects.
      * 
-     * @return array|CreditCardConfig[]
+     * @return array|CreditCardTypeConfig[]
      */
     public function getTypesInfo()
     {
@@ -231,7 +231,7 @@ class CreditCardValidator
      * Gets the credit card configuration.
      * 
      * @param string $cardType
-     * @return CreditCardConfig
+     * @return CreditCardTypeConfig
      */
     public function getTypeInfo($cardType)
     {
