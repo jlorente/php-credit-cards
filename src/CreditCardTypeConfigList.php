@@ -215,9 +215,9 @@ class CreditCardTypeConfigList
                 'type' => CreditCardValidator::TYPE_MAESTRO,
                 'patterns' => [
                     493698,
-                    [500000, 504174,],
-                    [504176, 506698,],
-                    [506779, 508999,],
+                    [500000, 504174],
+                    [504176, 506698],
+                    [506779, 508999],
                     [56, 59],
                     63,
                     67,
@@ -300,6 +300,8 @@ class CreditCardTypeConfigList
                 'type' => CreditCardValidator::TYPE_HIPER,
                 'patterns' => [
                     637095,
+                    63737423,
+                    63743358,
                     637568,
                     637599,
                     637609,
