@@ -342,4 +342,12 @@ class CreditCardValidatorTest extends MockeryTestCase
         $this->assertFalse($validator->isAmericanExpress('4242424242424242'));
     }
 
+    /**
+     * @group CreditCardValidatorTest
+     */
+    public function testIsHipercardDueToTheCompletionOfThePatternIsHigherThanOtherOnes() {
+        $validator = CreditCardValidator::make();
+
+        $this->assertTrue($validator->isHiperCard('6062826786276634'));
+    }
 }

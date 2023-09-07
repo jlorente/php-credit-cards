@@ -223,16 +223,16 @@ class CreditCardTypeConfig
      * Checks if the given card number matches this card type configuration.
      * 
      * @param string|int $cardNumber
-     * @return boolean
+     * @return bool
      */
     public function matches($cardNumber)
     {
         if ($this->matchesLengths($cardNumber) === false) {
-            return false;
+            return 0;
         }
 
         if ($this->getLuhnCheck() && $this->satisfiesLuhn($cardNumber) === false) {
-            return false;
+            return 0;
         }
 
         return $this->matchesPatterns($cardNumber);
@@ -240,9 +240,30 @@ class CreditCardTypeConfig
 
     /**
      * Checks if the card number matches one of the patterns array configuration.
+     *
+     * @param string|int $cardNumber
+     * @return int The greatest strength with which it matches or 0 if it does not match.
+     */
+    public function getMatchingPatternStrength($cardNumber)
+    {
+        $strength = 0;
+        foreach ($this->getPatterns() as $pattern) {
+            if ($this->matchesPattern($cardNumber, $pattern)) {
+                $s = $this->getPatternStrength($pattern);
+                if ($s > $strength) {
+                    $strength = $s;
+                }
+            }
+        }
+
+        return $strength;
+    }
+
+    /**
+     * Checks if the card number matches one of the patterns array configuration.
      * 
      * @param string|int $cardNumber
-     * @return boolean
+     * @return bool
      */
     public function matchesPatterns($cardNumber)
     {
@@ -258,7 +279,7 @@ class CreditCardTypeConfig
     /**
      * Checks if the card number matches one of the lengths array configuration.
      * 
-     * @param type $cardNumber
+     * @param string $cardNumber
      * @return boolean
      */
     public function matchesLengths($cardNumber)

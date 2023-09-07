@@ -140,15 +140,20 @@ class CreditCardValidator
      */
     public function getType($cardNumber)
     {
-        $results = new SplPriorityQueue();
+        $candidate = null;
+        $candidateStrength = 0;
+
         foreach ($this->getTypesInfo() as $config) {
-            $configResult = $config->matches($cardNumber);
-            if ($configResult) {
-                $results->insert($config, $configResult);
+            if ($config->matches($cardNumber)) {
+                $strength = $config->getMatchingPatternStrength($cardNumber);
+                if ($strength > $candidateStrength) {
+                    $candidate = $config;
+                    $candidateStrength = $strength;
+                }
             }
         }
 
-        return $results->isEmpty() ? null : $results->top();
+        return $candidate;
     }
 
     /**

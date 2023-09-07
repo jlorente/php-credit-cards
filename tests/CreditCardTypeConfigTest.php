@@ -468,4 +468,35 @@ class CreditCardTypeConfigTest extends TestCase
         $this->assertEquals('1234 567890 123456789', $result);
     }
 
+    /**
+     * @group CreditCardTypeConfigTest
+     */
+    public function testGetMatchingPatternStrengthReturnsTheGreatestStrengthThatSatifiesTheCoincidence()
+    {
+        $creditCardConfig = new CreditCardTypeConfig([
+            'niceType' => 'Test Card',
+            'type' => 'test-card',
+            'patterns' => [
+                27,
+                278,
+                [27895683013, 27895683018],
+                278956,
+                27895683,
+                2,
+            ],
+            'gaps' => [4, 10],
+            'lengths' => [
+                16,
+            ],
+            'code' => [
+                'name' => 'CVV',
+                'size' => 3,
+            ],
+            'luhnCheck' => false,
+        ]);
+
+        $result = $creditCardConfig->matches('2789568301312234');
+
+        $this->assertEquals(11, $result);
+    }
 }
