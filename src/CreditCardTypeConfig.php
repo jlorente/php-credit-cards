@@ -228,11 +228,11 @@ class CreditCardTypeConfig
     public function matches($cardNumber)
     {
         if ($this->matchesLengths($cardNumber) === false) {
-            return false;
+            return 0;
         }
 
         if ($this->getLuhnCheck() && $this->satisfiesLuhn($cardNumber) === false) {
-            return false;
+            return 0;
         }
 
         return $this->matchesPatterns($cardNumber);
