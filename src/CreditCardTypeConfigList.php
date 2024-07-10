@@ -43,7 +43,7 @@ class CreditCardTypeConfigList
     /**
      * Gets the credit card configuration objects.
      * 
-     * @return type
+     * @return array
      */
     public static function get()
     {
@@ -333,7 +333,22 @@ class CreditCardTypeConfigList
                 ],
                 'luhnCheck' => true,
             ],
+            CreditCardValidator::TYPE_TROY => [
+                'niceType' => 'Troy',
+                'type' => CreditCardValidator::TYPE_TROY,
+                'patterns' => [
+                    9792,
+                ],
+                'gaps' => [4, 8, 12],
+                'lengths' => [
+                    16,
+                ],
+                'code' => [
+                    'name' => 'CVV',
+                    'size' => 3,
+                ],
+                'luhnCheck' => true,
+            ],
         ];
     }
-
 }
