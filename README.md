@@ -22,6 +22,7 @@ javascript package. All the card types configuration have been extracted from it
 * Mir
 * Hiper
 * Hipercard
+* Troy
 
 ## Installation
 

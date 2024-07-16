@@ -267,6 +267,7 @@ class CreditCardValidatorTest extends MockeryTestCase
         $this->assertTrue($validator->isValid('5555555555554444'));
         $this->assertTrue($validator->isValid('378282246310005'));
         $this->assertTrue($validator->isValid('6011111111111117'));
+        $this->assertTrue($validator->isValid('9792052565200015'));
     }
 
     /**
@@ -349,5 +350,15 @@ class CreditCardValidatorTest extends MockeryTestCase
         $validator = CreditCardValidator::make();
 
         $this->assertTrue($validator->isHiperCard('6062826786276634'));
+    }
+
+    /**
+     * @group CreditCardValidatorTest
+     */
+    public function testIsVisaReturnTrueForATroyCardNumber()
+    {
+        $validator = CreditCardValidator::make();
+
+        $this->assertTrue($validator->isTroy('9792052565200015'));
     }
 }
