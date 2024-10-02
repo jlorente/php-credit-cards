@@ -8,14 +8,14 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 /**
  * Class CreditCardValidatorTest
- * 
+ *
  * @author José Lorente <jose.lorente.martin@gmail.com>
  */
 class CreditCardValidatorTest extends MockeryTestCase
 {
 
     /**
-     * 
+     *
      * @return array
      */
     protected function getValidConfigMock()
@@ -331,6 +331,16 @@ class CreditCardValidatorTest extends MockeryTestCase
         $validator = CreditCardValidator::make();
 
         $this->assertTrue($validator->isAmericanExpress('378282246310005'));
+    }
+
+    /**
+     * @group CreditCardValidatorTest
+     */
+    public function testIsEloReturnTrueForAnEloCardNumber()
+    {
+        $validator = CreditCardValidator::make();
+
+        $this->assertTrue($validator->isElo('4514160000000003'));
     }
 
     /**
