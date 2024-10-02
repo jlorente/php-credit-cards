@@ -361,4 +361,13 @@ class CreditCardValidatorTest extends MockeryTestCase
 
         $this->assertTrue($validator->isTroy('9792052565200015'));
     }
+    /**
+     * @group CreditCardValidatorTest
+     */
+    public function testIsCabalReturnsTrueForACabalCardNumber()
+    {
+        $validator = CreditCardValidator::make();
+
+        $this->assertTrue($validator->isCabal('5896570000000008'));
+    }
 }
