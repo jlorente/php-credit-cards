@@ -1,5 +1,5 @@
 {
-    "name": "jlorente/php-credit-cards",
+    "name": "lloople/php-credit-cards",
     "description": "A PHP package to perform operations on debit and credit cards like format, validate brand, number and Luhn algorithm. It validates popular brands like Visa, Mastercard, American Express, etc.",
     "keywords": [
         "php",
@@ -39,7 +39,7 @@
         }
     },
     "autoload-dev": {
-        "psr-4": { 
+        "psr-4": {
             "Jlorente\\CreditCards\\Tests\\": "tests/"
         }
     },
