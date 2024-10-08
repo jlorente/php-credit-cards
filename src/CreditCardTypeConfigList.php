@@ -4,12 +4,12 @@ namespace Jlorente\CreditCards;
 
 /**
  * Class CreditCardTypeConfigList.
- *
+ * 
  * Stores the package credit cards configuration array in an static method.
  *
- * This configuration is base on the Braintree credit card type javascript
+ * This configuration is base on the Braintree credit card type javascript 
  * package.
- *
+ * 
  * Here are some tips to understand the card configuration.
  * ```php
  *  [
@@ -33,7 +33,7 @@ namespace Jlorente\CreditCards;
  *      ],
  *  ];
  * ```
- *
+ * 
  * @see https://github.com/braintree/credit-card-type/blob/master/src/lib/card-types.ts
  * @author José Lorente <jose.lorente.martin@gmail.com>
  */
@@ -42,7 +42,7 @@ class CreditCardTypeConfigList
 
     /**
      * Gets the credit card configuration objects.
-     *
+     * 
      * @return array
      */
     public static function get()

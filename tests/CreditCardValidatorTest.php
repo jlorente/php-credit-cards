@@ -8,14 +8,14 @@ use Mockery\Adapter\Phpunit\MockeryTestCase;
 
 /**
  * Class CreditCardValidatorTest
- *
+ * 
  * @author José Lorente <jose.lorente.martin@gmail.com>
  */
 class CreditCardValidatorTest extends MockeryTestCase
 {
 
     /**
-     *
+     * 
      * @return array
      */
     protected function getValidConfigMock()
