@@ -44,6 +44,7 @@ use SplPriorityQueue;
  * @method bool isHiper($cardNumber)
  * @method bool isHiperCard($cardNumber)
  * @method bool isTroy($cardNumber)
+ * @method bool isCabal($cardNumber)
  *
  * @author José Lorente <jose.lorente.martin@gmail.com>
  */
@@ -63,6 +64,7 @@ class CreditCardValidator
     const TYPE_HIPER = 'hiper';
     const TYPE_HIPERCARD = 'hipercard';
     const TYPE_TROY = 'troy';
+    const TYPE_CABAL = 'cabal';
 
     /**
      * Map to help magic __call find the correct type for types with special
@@ -107,6 +109,7 @@ class CreditCardValidator
             , self::TYPE_HIPER
             , self::TYPE_HIPERCARD
             , self::TYPE_TROY
+            , self::TYPE_CABAL
         ];
     }
 

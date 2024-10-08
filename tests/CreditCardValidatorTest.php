@@ -336,6 +336,16 @@ class CreditCardValidatorTest extends MockeryTestCase
     /**
      * @group CreditCardValidatorTest
      */
+    public function testIsEloReturnTrueForAnEloCardNumber()
+    {
+        $validator = CreditCardValidator::make();
+
+        $this->assertTrue($validator->isElo('4514160000000003'));
+    }
+
+    /**
+     * @group CreditCardValidatorTest
+     */
     public function testIsReturnFalseAskingForAmericanExpressCheckAndGivingAVisaCardNumber()
     {
         $validator = CreditCardValidator::make();
@@ -360,5 +370,14 @@ class CreditCardValidatorTest extends MockeryTestCase
         $validator = CreditCardValidator::make();
 
         $this->assertTrue($validator->isTroy('9792052565200015'));
+    }
+    /**
+     * @group CreditCardValidatorTest
+     */
+    public function testIsCabalReturnsTrueForACabalCardNumber()
+    {
+        $validator = CreditCardValidator::make();
+
+        $this->assertTrue($validator->isCabal('5896570000000008'));
     }
 }

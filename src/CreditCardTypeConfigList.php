@@ -349,6 +349,27 @@ class CreditCardTypeConfigList
                 ],
                 'luhnCheck' => true,
             ],
+            CreditCardValidator::TYPE_CABAL => [
+                'niceType' => 'Cabal',
+                'type' => CreditCardValidator::TYPE_CABAL,
+                'patterns' => [
+                    589657,
+                    603522,
+                    [604201, 604219],
+                    [604300, 604399],
+                    604400,
+                    627170,
+                ],
+                'gaps' => [4, 8, 12],
+                'lengths' => [
+                    16,
+                ],
+                'code' => [
+                    'name' => 'CVV',
+                    'size' => 3,
+                ],
+                'luhnCheck' => true,
+            ],
         ];
     }
 }

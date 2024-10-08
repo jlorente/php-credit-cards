@@ -23,6 +23,7 @@ javascript package. All the card types configuration have been extracted from it
 * Hiper
 * Hipercard
 * Troy
+* Cabal
 
 ## Installation
 
