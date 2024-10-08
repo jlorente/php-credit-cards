@@ -181,7 +181,7 @@ class CreditCardValidator
 
     /**
      * Checks if the credit card number is a card of the given type.
-     *
+     * 
      * @param string $cardType
      * @param string $cardNumber
      * @return bool
