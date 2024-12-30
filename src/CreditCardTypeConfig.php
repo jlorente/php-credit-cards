@@ -239,6 +239,17 @@ class CreditCardTypeConfig
     }
 
     /**
+     * Checks if the given card number matches this card type configuration, but skips luhn checks
+     * 
+     * @param string|int $cardNumber
+     * @return bool
+     */
+    public function matchesWithoutLuhn($cardNumber)
+    {
+        return $this->matchesLengths($cardNumber) && $this->matchesPatterns($cardNumber);
+    }
+
+    /**
      * Checks if the card number matches one of the patterns array configuration.
      *
      * @param string|int $cardNumber

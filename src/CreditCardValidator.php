@@ -163,6 +163,30 @@ class CreditCardValidator
     }
 
     /**
+     * Gets the best CreditCardTypeConfig object that matches the given card number.
+     * 
+     * @param string|int $cardNumber
+     * @return CreditCardTypeConfig|null
+     */
+    public function getTypeWithoutLuhn($cardNumber)
+    {
+        $candidate = null;
+        $candidateStrength = 0;
+
+        foreach ($this->getTypesInfo() as $config) {
+            if ($config->matchesWithoutLuhn($cardNumber)) {
+                $strength = $config->getMatchingPatternStrength($cardNumber);
+                if ($strength > $candidateStrength) {
+                    $candidate = $config;
+                    $candidateStrength = $strength;
+                }
+            }
+        }
+
+        return $candidate;
+    }
+
+    /**
      * Checks if the credit card number is valid.
      * 
      * @param string $cardNumber
