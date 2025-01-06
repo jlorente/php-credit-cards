@@ -105,6 +105,14 @@ $validator->isVisa('4242424242424242');
 $typeConfig = $validator->getType('4242424242424242');
 ```
 
+### Get the type configuration of a card number, but do not do a Luhn check
+#### Why do this?
+If you are wanting a way to get the brand but not have this library do any validation, you can have it only pass back what brand it thinks it is. Useful for IXOPAY (TokenEx) tokens: https://documentation.ixopay.com/docs/tokenex/universal-token-schemes#sixantokenfour 
+
+```php
+$typeConfig = $validator->getTypeWithoutLuhn('424242HU0OIW4242');
+```
+
 With the type configuration you can know metadata info, perform some validation 
 or format the card number using the class methods.
 
