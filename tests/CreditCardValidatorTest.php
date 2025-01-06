@@ -247,6 +247,58 @@ class CreditCardValidatorTest extends MockeryTestCase
     /**
      * @group CreditCardValidatorTest
      */
+    public function testGetTypeWithoutLuhnReturnVisaCreditCardTypeConfigObjectForAVisaCardNumber()
+    {
+        $validator = CreditCardValidator::make();
+
+        $result = $validator->getTypeWithoutLuhn('424242xxxxxx4242');
+
+        $this->assertInstanceOf(CreditCardTypeConfig::class, $result);
+        $this->assertEquals(CreditCardValidator::TYPE_VISA, $result->getType());
+    }
+
+    /**
+     * @group CreditCardValidatorTest
+     */
+    public function testGetTypeWithoutLuhnReturnMastercardCreditCardTypeConfigObjectForAMastercardCardNumber()
+    {
+        $validator = CreditCardValidator::make();
+
+        $result = $validator->getTypeWithoutLuhn('555555xxxxxx4444');
+
+        $this->assertInstanceOf(CreditCardTypeConfig::class, $result);
+        $this->assertEquals(CreditCardValidator::TYPE_MASTERCARD, $result->getType());
+    }
+
+    /**
+     * @group CreditCardValidatorTest
+     */
+    public function testGetTypeWithoutLuhnReturnAmericanExpressCreditCardTypeConfigObjectForAnAmericanExpressCardNumber()
+    {
+        $validator = CreditCardValidator::make();
+
+        $result = $validator->getTypeWithoutLuhn('378282xxxxx0005');
+
+        $this->assertInstanceOf(CreditCardTypeConfig::class, $result);
+        $this->assertEquals(CreditCardValidator::TYPE_AMERICAN_EXPRESS, $result->getType());
+    }
+
+    /**
+     * @group CreditCardValidatorTest
+     */
+    public function testGetTypeWithoutLuhnReturnDiscoverCreditCardTypeConfigObjectForADiscoverCardNumber()
+    {
+        $validator = CreditCardValidator::make();
+
+        $result = $validator->getTypeWithoutLuhn('601111xxxxxx1117');
+
+        $this->assertInstanceOf(CreditCardTypeConfig::class, $result);
+        $this->assertEquals(CreditCardValidator::TYPE_DISCOVER, $result->getType());
+    }
+
+    /**
+     * @group CreditCardValidatorTest
+     */
     public function testGetTypeReturnNullForAnInvalidCreditCardNumber()
     {
         $validator = CreditCardValidator::make();
