@@ -52,6 +52,8 @@ You can create an instance of the validator either by using the common
 constructor or the static make method.
 
 ```php
+use Jlorente\CreditCards\CreditCardValidator;
+
 $validator = new CreditCardValidator();
 ```
 
